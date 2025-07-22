@@ -7,10 +7,12 @@ Un CLI et serveur JavaScript/TypeScript pour tester et interagir avec des agents
 **Pour les utilisateurs Windows**, veuillez consulter le fichier [.win/WINDOWS-README.md](.win/WINDOWS-README.md) qui contient des instructions spécifiques et des scripts optimisés pour Windows.
 
 **Solutions rapides Windows :**
+
 - **Installation automatique** : `.\.win\install-windows.ps1`
+- **Interface web** : `.\.win\web.ps1`
 - Scripts PowerShell : `.\.win\cli.ps1` et `.\.win\server.ps1`
 - Scripts Batch : `.win\cli.bat` et `.win\server.bat`
-- Scripts npm : `npm run cli:win` et `npm run server:win`
+- Scripts npm : `npm run cli:win`, `npm run server:win`, et `npm run web:win`
 - Diagnostic : `.\.win\diagnostic-windows.ps1`
 
 ## 📦 Installation
@@ -35,7 +37,28 @@ npm run server
 npm run dev
 ```
 
-Le serveur sera accessible sur `http://localhost:8080`
+Le serveur sera accessible sur `http://localhost:9999`
+
+### 2. Interface Web (Nouveau !)
+
+```bash
+# Démarrer l'interface web
+npm run web
+
+# Ou en mode développement avec rechargement automatique
+npm run web:dev
+```
+
+L'interface web sera accessible sur `http://localhost:9999` dans votre navigateur !
+
+**Fonctionnalités de l'interface web :**
+
+- 🎨 Interface moderne et responsive
+- 💬 Chat en temps réel avec streaming
+- 🤖 Sélection d'agents visuelle
+- ⚙️ Paramètres configurables
+- 📱 Compatible mobile et desktop
+- 🔄 Rechargement automatique en mode dev
 
 ### 2. Utiliser le CLI
 
@@ -96,17 +119,20 @@ Modifiez le fichier `agents_config.json` pour configurer vos agents :
 ## 📡 Endpoints API
 
 ### Vérification de santé
+
 ```http
 GET /health
 ```
 
 ### Liste des agents
+
 ```http
 GET /agents
 Authorization: Bearer your-token
 ```
 
 ### Invocation directe
+
 ```http
 POST /:agentId/invoke
 Authorization: Bearer your-token
@@ -119,6 +145,7 @@ Content-Type: application/json
 ```
 
 ### Streaming SSE
+
 ```http
 POST /:agentId/stream
 Authorization: Bearer your-token
@@ -131,6 +158,7 @@ Content-Type: application/json
 ```
 
 ### Arrêter la génération
+
 ```http
 POST /:agentId/stop
 Authorization: Bearer your-token
@@ -142,6 +170,7 @@ Content-Type: application/json
 ```
 
 ### Gestion des conversations
+
 ```http
 GET /conversations
 GET /conversations/:threadId
@@ -280,4 +309,4 @@ MIT
 
 ---
 
-🚀 **Prêt à discuter avec vos agents IA !** 
+🚀 **Prêt à discuter avec vos agents IA !**

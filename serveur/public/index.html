@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🤖 Agent IA - Interface Web</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <h1><i class="fas fa-robot"></i> Agent IA</h1>
+          <div class="header-controls">
+            <select id="agentSelect" class="agent-select">
+              <option value="">Choisir un agent...</option>
+            </select>
+            <button
+              id="clearChat"
+              class="btn btn-secondary"
+              title="Effacer la conversation"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
+            <button
+              id="settingsBtn"
+              class="btn btn-secondary"
+              title="Paramètres"
+            >
+              <i class="fas fa-cog"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Chat Area -->
+      <main class="chat-container">
+        <div id="chatMessages" class="chat-messages">
+          <div class="welcome-message">
+            <div class="welcome-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h2>Bienvenue !</h2>
+            <p>Sélectionnez un agent et commencez à discuter.</p>
+            <div class="agent-list" id="agentList">
+              <!-- Les agents seront chargés ici -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-container">
+          <div class="input-wrapper">
+            <textarea
+              id="messageInput"
+              class="message-input"
+              placeholder="Tapez votre message..."
+              rows="1"
+            ></textarea>
+            <button id="sendButton" class="send-button" disabled>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+          <div class="input-info">
+            <span id="typingIndicator" class="typing-indicator hidden">
+              <i class="fas fa-circle"></i>
+              <i class="fas fa-circle"></i>
+              <i class="fas fa-circle"></i>
+            </span>
+            <span id="statusMessage" class="status-message"></span>
+          </div>
+        </div>
+      </main>
+
+      <!-- Settings Modal -->
+      <div id="settingsModal" class="modal hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3><i class="fas fa-cog"></i> Paramètres</h3>
+            <button id="closeSettings" class="close-btn">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="setting-group">
+              <label for="apiUrl">URL de l'API :</label>
+              <input type="url" id="apiUrl" value="http://localhost:5432" />
+            </div>
+            <div class="setting-group">
+              <label for="bearerToken">Token d'authentification :</label>
+              <input type="password" id="bearerToken" placeholder="Optionnel" />
+            </div>
+            <div class="setting-group">
+              <label>
+                <input type="checkbox" id="streamMode" checked />
+                Mode streaming (recommandé)
+              </label>
+            </div>
+            <div class="setting-group">
+              <label>
+                <input type="checkbox" id="debugMode" />
+                Mode debug
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="saveSettings" class="btn btn-primary">
+              Sauvegarder
+            </button>
+            <button id="testConnection" class="btn btn-secondary">
+              Tester la connexion
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connection Status -->
+      <div id="connectionStatus" class="connection-status">
+        <i class="fas fa-circle"></i>
+        <span id="connectionText">Déconnecté</span>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

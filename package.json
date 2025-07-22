@@ -14,6 +14,10 @@
     "server-simple:win": "npx tsx serveur/server-simple.mts",
     "dev": "tsx --watch serveur/server.mts",
     "dev:win": "npx tsx --watch serveur/server.mts",
+    "web": "tsx serveur/server.mts",
+    "web:win": "npx tsx serveur/server.mts",
+    "web:dev": "tsx --watch serveur/server.mts",
+    "web:dev:win": "npx tsx --watch serveur/server.mts",
     "test-server": "tsx .win/test-server.mts"
   },
   "bin": {
